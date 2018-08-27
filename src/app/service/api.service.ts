@@ -14,8 +14,8 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   // リクエスト
-  request(params: string):Observable<Anime[]>{
+  request(param: string):Observable<Anime[]>{
     // URLBaseの部分とparamsを結合させて実行
-    return this.httpClient.get<Anime[]>(this.apiurl + params);
+    return this.httpClient.get<Anime[]>(this.apiurl + param);
   }
 }

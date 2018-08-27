@@ -1,10 +1,12 @@
 <select [(ngModel)]="selYear" (ngModelChange)="onChangeYear($event)">
-  <option disabled="disabled" [value]="undefined">選択してください</option>
-  <option *ngFor="let y of years" [value]="y.year">{{y.year}}</option>
+  <option *ngFor="let y of years" [ngValue]="y">{{y.display}}</option>
 </select>
 
 <ul>
   <li *ngFor="let ad of animedata">
-    {{ad.title}}
+    {{ad.title}}({{ad.title_short1}}) - <a href="{{ad.public_url}}">公式サイト</a> -
+    <p *ngIf="ad.sex === 0; then male; else female" class="content-block"></p>
+    <ng-template #male>[男性向け]</ng-template>
+    <ng-template #female>[女性向け]</ng-template>
   </li>
 </ul>
