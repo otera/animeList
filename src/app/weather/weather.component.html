@@ -1,0 +1,10 @@
+<select [(ngModel)]="selYear" (ngModelChange)="onChangeYear($event)">
+  <option disabled="disabled" [value]="undefined">選択してください</option>
+  <option *ngFor="let y of years" [value]="y.year">{{y.year}}</option>
+</select>
+
+<ul>
+  <li *ngFor="let ad of animedata">
+    {{ad.title}}
+  </li>
+</ul>
