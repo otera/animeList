@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule } from '@angular/material';
+import { MatSelectModule, MatCardModule, MatTableModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, MatSelectModule
+    BrowserAnimationsModule, MatSelectModule, MatCardModule, MatTableModule, MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

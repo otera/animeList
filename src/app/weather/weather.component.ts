@@ -31,6 +31,8 @@ export class WeatherComponent implements OnInit {
   // 選択項目
   selYear: number;
 
+  displayedColumns: string[] = ['title', 'title_short1', 'target', 'public_url', 'twitter'];
+
   constructor(private apiService: ApiService) { }
 
   createSelOption() {
