@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from "../service/api.service";
 import { Anime } from "../class/anime";
+import { Years } from "../interface/years";
 
 import * as moment from 'moment';
 
@@ -22,13 +23,13 @@ export class WeatherComponent implements OnInit {
   ];
 
   // セレクトボックスの中身
-  years = [];
+  years: Years[] = [];
 
   // APIから取得
   animedata: Anime[];
 
   // 選択項目
-  selYear = [];
+  selYear: number;
 
   constructor(private apiService: ApiService) { }
 
@@ -57,7 +58,7 @@ export class WeatherComponent implements OnInit {
   }
 
   onChangeYear(event) {
-    this.requestSend(event);
+    this.requestSend(event.value);
   }
 
 }

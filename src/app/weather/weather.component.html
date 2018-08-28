@@ -1,6 +1,10 @@
-<select [(ngModel)]="selYear" (ngModelChange)="onChangeYear($event)">
-  <option *ngFor="let y of years" [ngValue]="y">{{y.display}}</option>
-</select>
+<mat-form-field>
+  <mat-select placeholder="年代" (selectionChange)="onChangeYear($event)">
+    <mat-option *ngFor="let y of years" [value]="y">
+      {{y.display}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
 <ul>
   <li *ngFor="let ad of animedata">
