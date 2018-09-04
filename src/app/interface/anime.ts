@@ -1,4 +1,4 @@
-export class Anime {
+export interface Anime {
     id:string;
     title:string; //作品タイトル
     title_short1:string; //略称

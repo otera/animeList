@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from "../service/api.service";
-import { Anime } from "../class/anime";
+import { Anime } from "../interface/anime";
 import { Years } from "../interface/years";
 
 import * as moment from 'moment';
