@@ -7,11 +7,11 @@ import { Years } from "../interface/years";
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-weather',
-  templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  selector: 'app-anime',
+  templateUrl: './anime.component.html',
+  styleUrls: ['./anime.component.css']
 })
-export class WeatherComponent implements OnInit {
+export class AnimeComponent implements OnInit {
 
   // セレクトボックスの中身を生成するためのデータ
   private MAX_YYYY = Number(moment().format('YYYY'));

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './weather/weather.component';
+import { AnimeComponent } from './anime/anime.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule, MatCardModule, MatTableModule, MatIconModule } from '@angular/material';
@@ -12,7 +12,7 @@ import { MatSelectModule, MatCardModule, MatTableModule, MatIconModule } from '@
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent
+    AnimeComponent
   ],
   imports: [
     BrowserModule,
