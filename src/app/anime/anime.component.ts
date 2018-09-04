@@ -31,7 +31,7 @@ export class AnimeComponent implements OnInit {
   selYear: number;
 
   // テーブル項目
-  displayedColumns: string[] = ['title', 'title_short1', 'target', 'public_url', 'twitter'];
+  displayedColumns: string[] = ['title', 'title_short1', 'target', 'twitter'];
 
   constructor(private apiService: ApiService) { }
 
