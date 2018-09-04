@@ -14,7 +14,6 @@ import * as moment from 'moment';
 export class AnimeComponent implements OnInit {
 
   // セレクトボックスの中身を生成するためのデータ
-  private MAX_YYYY = Number(moment().format('YYYY'));
   private seasons = [
     { season: "(冬)", phase: "1" },
     { season: "(春)", phase: "2" },
@@ -31,26 +30,45 @@ export class AnimeComponent implements OnInit {
   // 選択項目
   selYear: number;
 
+  // テーブル項目
   displayedColumns: string[] = ['title', 'title_short1', 'target', 'public_url', 'twitter'];
 
   constructor(private apiService: ApiService) { }
 
+  // セレクトボックスの中身を生成
   createSelOption() {
-    let yyyy = 2014;
-    for (; yyyy <= this.MAX_YYYY; yyyy++) {
+    const MAX_YYYY = Number(moment().format('YYYY')); // 今年
+    let yyyy = 2014; // API対応開始年
+
+    for (; yyyy <= MAX_YYYY; yyyy++) {
       this.seasons.forEach(season => {
         this.years.push({
           year: yyyy, display: yyyy + "年" + season.season, phase: season.phase
         });
       });
     }
+
+    // 新しい順にする
+    this.years.sort((a, b) => {
+      if(a.year > b.year){
+        return -1;
+      }
+      if (a.year < b.year) {
+        return 1;
+      }
+      if (a.phase > b.phase) {
+        return -1;
+      }
+      // a.phase < b.phase
+      return 1;
+    });
   };
 
   ngOnInit() {
     this.createSelOption();
   }
 
-  // ここ型定義したほうがよくね
+  // serviceにリクエスト要求
   requestSend(params: { [key: string]: string; }) {
     this.apiService.request("master/" + params.year + "/" + params.phase).subscribe(
       data => {
@@ -59,6 +77,7 @@ export class AnimeComponent implements OnInit {
     );
   }
 
+  // セレクトボックス変更イベント
   onChangeYear(event) {
     this.requestSend(event.value);
   }
