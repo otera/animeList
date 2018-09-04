@@ -35,7 +35,7 @@
 
   <ng-container matColumnDef="twitter">
     <th mat-header-cell *matHeaderCellDef>Twitter</th>
-    <td mat-cell *matCellDef="let ad"><a href="https://twitter.com/{{ad.twitter_account}}" target="_blank"><i class="fab fa-twitter fa-lg"></i></a></td>
+    <td mat-cell *matCellDef="let ad"><a href="https://twitter.com/{{ad.twitter_account}}" target="_blank" class="twitter"><i class="fab fa-twitter fa-lg"></i></a></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
