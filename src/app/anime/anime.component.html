@@ -30,8 +30,8 @@
     <th mat-header-cell *matHeaderCellDef>ターゲット</th>
     <td mat-cell *matCellDef="let ad">
       <p *ngIf="ad.sex === 0; then male; else female" class="content-block"></p>
-      <ng-template #male>♂</ng-template>
-      <ng-template #female>♀</ng-template>
+      <ng-template #male>男性</ng-template>
+      <ng-template #female>女性</ng-template>
     </td>
   </ng-container>
 
