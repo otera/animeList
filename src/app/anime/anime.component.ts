@@ -14,10 +14,10 @@ import * as moment from "moment";
 export class AnimeComponent implements OnInit {
   // セレクトボックスの中身を生成するためのデータ
   private seasons = [
-    { season: "(冬)", phase: "1" },
-    { season: "(春)", phase: "2" },
-    { season: "(夏)", phase: "3" },
-    { season: "(秋)", phase: "4" },
+    { season: "(冬)", phase: "winter" },
+    { season: "(春)", phase: "spring" },
+    { season: "(夏)", phase: "summer" },
+    { season: "(秋)", phase: "fall" },
   ];
 
   // セレクトボックスの中身
@@ -30,20 +30,14 @@ export class AnimeComponent implements OnInit {
   selYear: number;
 
   // テーブル項目
-  displayedColumns: string[] = [
-    "title",
-    "title_short1",
-    "sequel",
-    "target",
-    "twitter",
-  ];
+  displayedColumns: string[] = ["title", "type", "score", "genres"];
 
   constructor(private apiService: ApiService) {}
 
   // セレクトボックスの中身を生成
   createSelOption() {
     const MAX_YYYY = Number(moment().format("YYYY")); // 今年
-    let yyyy = 2014; // API対応開始年
+    let yyyy = 2014; // Jikan対応開始年
 
     for (; yyyy <= MAX_YYYY; yyyy++) {
       this.seasons.forEach((season) => {
@@ -56,18 +50,10 @@ export class AnimeComponent implements OnInit {
     }
 
     // 新しい順にする
+    const order = ["fall", "summer", "spring", "winter"];
     this.years.sort((a, b) => {
-      if (a.year > b.year) {
-        return -1;
-      }
-      if (a.year < b.year) {
-        return 1;
-      }
-      if (a.phase > b.phase) {
-        return -1;
-      }
-      // a.phase < b.phase
-      return 1;
+      if (a.year !== b.year) return b.year - a.year;
+      return order.indexOf(a.phase) - order.indexOf(b.phase);
     });
   }
 
@@ -75,17 +61,11 @@ export class AnimeComponent implements OnInit {
     this.createSelOption();
   }
 
-  // serviceにリクエスト要求
-  requestSend(params: { [key: string]: string }) {
-    this.apiService
-      .request("master/" + params.year + "/" + params.phase)
-      .subscribe((data) => {
-        this.animedata = data;
-      });
-  }
-
   // セレクトボックス変更イベント
   onChangeYear(event) {
-    this.requestSend(event.value);
+    const { year, phase } = event.value;
+    this.apiService.getSeasonalAnime(year, phase).subscribe((data) => {
+      this.animedata = data;
+    });
   }
 }

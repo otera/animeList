@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AnimeComponent } from './anime/anime.component';
+import { GenreNamesPipe } from './pipe/genre-names.pipe';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +16,8 @@ import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
-    AnimeComponent
+    AnimeComponent,
+    GenreNamesPipe
   ],
   imports: [
     BrowserModule,
