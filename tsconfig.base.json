@@ -8,12 +8,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2020",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2020",
       "dom"
     ]
   }
