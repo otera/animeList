@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { ApiService } from "../service/api.service";
 import { Anime } from "../interface/anime";
@@ -11,6 +11,7 @@ import { MatSelectChange } from "@angular/material/select";
     selector: "app-anime",
     templateUrl: "./anime.component.html",
     styleUrls: ["./anime.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AnimeComponent implements OnInit {

@@ -5,8 +5,9 @@
     "types": []
   },
   "angularCompilerOptions": {
+    "strictTemplates": false,
     "typeCheckHostBindings": false
   },
-  "files": ["main.ts", "polyfills.ts"],
+  "files": ["main.ts", "polyfills.ts", "environments/environment.prod.ts"],
   "include": ["src/**/*.d.ts"]
 }

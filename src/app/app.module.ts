@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -20,5 +20,5 @@ import { MatTableModule } from '@angular/material/table';
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         FormsModule,
-        BrowserAnimationsModule, MatSelectModule, MatCardModule, MatTableModule, MatIconModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        BrowserAnimationsModule, MatSelectModule, MatCardModule, MatTableModule, MatIconModule], providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())] })
 export class AppModule { }
