@@ -8,9 +8,10 @@ import { DateTime } from "luxon";
 import { MatSelectChange } from "@angular/material/select";
 
 @Component({
-  selector: "app-anime",
-  templateUrl: "./anime.component.html",
-  styleUrls: ["./anime.component.scss"],
+    selector: "app-anime",
+    templateUrl: "./anime.component.html",
+    styleUrls: ["./anime.component.scss"],
+    standalone: false
 })
 export class AnimeComponent implements OnInit {
   // セレクトボックスの中身を生成するためのデータ

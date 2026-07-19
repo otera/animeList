@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'genreNames' })
+@Pipe({
+    name: 'genreNames',
+    standalone: false
+})
 export class GenreNamesPipe implements PipeTransform {
   transform(genres: { name: string }[]): string {
     if (!genres || genres.length === 0) {
