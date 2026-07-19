@@ -1,9 +1,11 @@
 <mat-card appearance="outlined">
   <mat-form-field>
     <mat-select placeholder="年代" (selectionChange)="onChangeYear($event)">
-      <mat-option *ngFor="let y of years" [value]="y">
-        {{ y.display }}
-      </mat-option>
+      @for (y of years; track y) {
+        <mat-option [value]="y">
+          {{ y.display }}
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </mat-card>
