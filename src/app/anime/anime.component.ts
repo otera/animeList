@@ -1,15 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { ApiService } from "../service/api.service";
 import { Anime } from "../interface/anime";
 import { Years } from "../interface/years";
 
-import * as moment from "moment";
+import { DateTime } from "luxon";
+import { MatSelectChange } from "@angular/material/select";
 
 @Component({
-  selector: "app-anime",
-  templateUrl: "./anime.component.html",
-  styleUrls: ["./anime.component.scss"],
+    selector: "app-anime",
+    templateUrl: "./anime.component.html",
+    styleUrls: ["./anime.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AnimeComponent implements OnInit {
   // セレクトボックスの中身を生成するためのデータ
@@ -24,10 +27,7 @@ export class AnimeComponent implements OnInit {
   years: Years[] = [];
 
   // APIから取得
-  animedata: Anime[];
-
-  // 選択項目
-  selYear: number;
+  animedata: Anime[] = [];
 
   // テーブル項目
   displayedColumns: string[] = ["title", "type", "score", "genres"];
@@ -36,7 +36,7 @@ export class AnimeComponent implements OnInit {
 
   // セレクトボックスの中身を生成
   createSelOption() {
-    const MAX_YYYY = Number(moment().format("YYYY")); // 今年
+    const MAX_YYYY = DateTime.now().year; // 今年
     let yyyy = 2014; // Jikan対応開始年
 
     for (; yyyy <= MAX_YYYY; yyyy++) {
@@ -52,7 +52,9 @@ export class AnimeComponent implements OnInit {
     // 新しい順にする
     const order = ["fall", "summer", "spring", "winter"];
     this.years.sort((a, b) => {
-      if (a.year !== b.year) return b.year - a.year;
+      if (a.year !== b.year) {
+        return b.year - a.year;
+      }
       return order.indexOf(a.phase) - order.indexOf(b.phase);
     });
   }
@@ -62,7 +64,7 @@ export class AnimeComponent implements OnInit {
   }
 
   // セレクトボックス変更イベント
-  onChangeYear(event) {
+  onChangeYear(event: MatSelectChange) {
     const { year, phase } = event.value;
     this.apiService.getSeasonalAnime(year, phase).subscribe((data) => {
       this.animedata = data;

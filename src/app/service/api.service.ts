@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { Anime } from "../interface/anime";
+import { Anime } from '../interface/anime';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ApiService {
-  private apiurl = "https://api.jikan.moe/v4/";
+  private apiurl = 'https://api.jikan.moe/v4/';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -13,19 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    AnimeComponent,
-    GenreNamesPipe
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule, MatSelectModule, MatCardModule, MatTableModule, MatIconModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        AnimeComponent,
+        GenreNamesPipe
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        BrowserAnimationsModule, MatSelectModule, MatCardModule, MatTableModule, MatIconModule], providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())] })
 export class AppModule { }
